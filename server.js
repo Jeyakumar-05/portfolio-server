@@ -1,16 +1,19 @@
-const express = require("express");
-const app = express();
-const dbCon = require("./config/db");
-const Projects = require("./routes/projectRoute")
-
 require("dotenv").config();
+const express = require("express");
+
+const app = express();
+app.use(express.json());
+
+const dbConn = require("./config/db");
+const Projects = require("./routes/projectRoute");
+const User = require("./routes/userRoute");
 
 const port = process.env.PORT || 8888;
-app.use("/projects",Projects)
+// app.use("/projects", Projects);
+app.use("/user", User);
 
-app.use(express.json());
 app.get("/", (req, res) => {
-  res.json({ message: "Heyy heyy" });
+  res.status(400).json("Heyyy");
 });
 
 app.listen(port, () => {

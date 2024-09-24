@@ -1,9 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect(
-  process.env.MONGOURL ||
-    "mongodb+srv://jeyakumar1442:9jQOPBwgQGrsFanP@in-aws.j2ept.mongodb.net/?retryWrites=true&w=majority&appName=In-AWS"
-);
+mongoose.connect(process.env.MONGOURL);
 
 const connection = mongoose.connection;
 
