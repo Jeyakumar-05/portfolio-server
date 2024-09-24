@@ -1,11 +1,11 @@
+const User = require("../models/userModel");
 const express = require("express");
 const router = express.Router();
-const User = require("../models/userModel");
 
 router.get("/getuser", async (req, res) => {
   try {
-    const fetcheduser = await User.find();
-    res.status(200).json(fetcheduser);
+    const fetchedusers = await User.find();
+    res.status(200).json(fetchedusers);
   } catch (error) {
     res.status(500).json(error);
   }
@@ -14,13 +14,17 @@ router.get("/getuser", async (req, res) => {
 router.post("/adduser", async (req, res) => {
   try {
     const newuserdata = new User(req.body);
-    const { name, email, pass } = newuserdata;
+    const { Name, email } = newuserdata;
     if (!name || !email || !pass) {
       res.status(400).json({ message: "Name/email/pass required" });
     }
-    const saveuser = await newuserdata.save(); 
-    res.status(201).json(saveuser);
+    const savedata = await newuserdata.save();
+    res.status(201).json(savedata);
   } catch (error) {
     res.status(500).json(error);
   }
 });
+
+
+
+module.exports = router;

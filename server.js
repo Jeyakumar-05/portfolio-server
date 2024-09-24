@@ -9,7 +9,7 @@ const Projects = require("./routes/projectRoute");
 const User = require("./routes/userRoute");
 
 const port = process.env.PORT || 8888;
-// app.use("/projects", Projects);
+app.use("/projects", Projects);
 app.use("/user", User);
 
 app.get("/", (req, res) => {
